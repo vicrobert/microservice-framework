@@ -1,5 +1,11 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /v1
 spring:
+  application:
+    name: consumer
   cloud:
     nacos:
-      config:
+      discovery:
         server-addr: 172.16.49.66:8848
