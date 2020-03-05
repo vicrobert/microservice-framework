@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/config")
+@RequestMapping("/sysconfig")
 @RefreshScope
-public class ConfigController {
+public class SysConfigController {
     @Value("${useLocalCache:false}")
     private boolean useLocalCache;
 

@@ -1,7 +1,13 @@
 server:
-  port: 8081
+  port: 8443
   servlet:
     context-path: /v1
+  ssl:
+    protocol: TLS
+    key-store: classpath:keystore
+    key-store-password: abc123
+    key-store-type: JKS
+
 spring:
   application:
     name: consumer

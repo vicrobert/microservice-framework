@@ -18,14 +18,14 @@ public class AppController {
     @Autowired
     RestTemplate restTemplate;
 
-    @LoadBalanced
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
     @RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
     public String echo(@PathVariable String str) {
-        return restTemplate.getForObject("http://service-provider/v1/app/echo/" + str, String.class);
+        return restTemplate.getForObject("https://service-provider/v1/app/echo/" + str, String.class);
+    }
+
+    @RequestMapping(value = "/getProviderConfig", method = RequestMethod.GET)
+    public Boolean getProviderConfig() {
+        return restTemplate.getForObject("https://service-provider/v1/sysconfig/get", Boolean.class);
     }
 }
