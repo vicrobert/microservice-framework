@@ -1,9 +1,8 @@
 package net.yangjunbo.microserviceframework.consumer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +18,9 @@ public class AppController {
     RestTemplate restTemplate;
 
 
-    @RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
-    public String echo(@PathVariable String str) {
+    @SentinelResource(value = "sayHello")
+    @RequestMapping(value = "/sayHello/{str}", method = RequestMethod.GET)
+    public String sayHello(@PathVariable String str) {
         return restTemplate.getForObject("https://service-provider/v1/app/echo/" + str, String.class);
     }
 

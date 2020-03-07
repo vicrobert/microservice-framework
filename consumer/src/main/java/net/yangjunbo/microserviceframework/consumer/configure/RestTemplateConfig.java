@@ -1,5 +1,7 @@
 package net.yangjunbo.microserviceframework.consumer.configure;
 
+import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
+import net.yangjunbo.microserviceframework.consumer.utils.ExceptionUtil;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
@@ -17,11 +19,22 @@ import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.cert.X509Certificate;
 
+/**
+ * RestTemplate 配置类
+ * author: yangjb
+ * date: 3/6/2020
+ */
 @Configuration
 public class RestTemplateConfig {
 
+    /**
+     * 配置Https SSL支持
+     * @return
+     * @throws Exception
+     */
     @LoadBalanced
     @Bean
+    @SentinelRestTemplate(blockHandler = "handleException", blockHandlerClass = ExceptionUtil.class)
     RestTemplate restTemplate() throws Exception {
         TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 
@@ -46,6 +59,7 @@ public class RestTemplateConfig {
 
         requestFactory.setHttpClient(httpClient);
         RestTemplate restTemplate = new RestTemplate(requestFactory);
+
         return restTemplate;
     }
 }
