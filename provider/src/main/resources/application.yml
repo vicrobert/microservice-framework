@@ -4,9 +4,9 @@ server:
     context-path: /v1
   ssl:
     protocol: TLS
-    key-store: classpath:keystore
+    key-store: classpath:cert.p12
     key-store-password: abc123
-    key-store-type: JKS
+    key-store-type: PKCS12
 
 spring:
   application:

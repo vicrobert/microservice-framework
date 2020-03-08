@@ -1,6 +1,7 @@
 package net.yangjunbo.microserviceframework.consumer.configure;
 
 import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import net.yangjunbo.microserviceframework.consumer.utils.ExceptionUtil;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
