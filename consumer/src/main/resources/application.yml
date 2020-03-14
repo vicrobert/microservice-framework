@@ -19,4 +19,20 @@ spring:
       transport:
         port: 8719
         dashboard: localhost:8080
+    stream:
+      bindings:
+#        alarm_input:
+#          destination: alarm_topic
+#          binder: kafka
+#          group: alarm_group
+        alarm_output:
+          destination: alarm_topic
+          binder: kafka
+      kafka:
+        binder:
+          brokers: 172.16.49.41:9092
+          zkNodes: 172.16.49.41:2181
+          requiredAcks: 1
+
+
 

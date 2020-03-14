@@ -40,7 +40,7 @@ public class RestTemplateConfig {
         TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-        ClassPathResource resource = new ClassPathResource("keystore");
+        ClassPathResource resource = new ClassPathResource("cert.p12");
         InputStream inputStream = resource.getInputStream();
         keyStore.load(inputStream, "abc123".toCharArray());
 
