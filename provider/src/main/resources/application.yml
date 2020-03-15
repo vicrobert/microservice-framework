@@ -17,10 +17,9 @@ spring:
         server-addr: 172.16.49.66:8848
     stream:
       bindings:
-        alarm_input:
+        alarm_output:
           destination: alarm_topic
           binder: kafka
-          group: alarm_group
       kafka:
         binder:
           brokers: 172.16.49.41:9092
